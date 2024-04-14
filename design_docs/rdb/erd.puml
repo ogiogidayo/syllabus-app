@@ -1,0 +1,41 @@
+@startuml
+
+object users {
+<#white>| int | user_id | PK | NOT NULL |
+<#white>| int | university_id | FK | NOT NULL |
+<#white>| varchar | name | | NOT NULL |
+<#white>| varchar | login_id |  | NOT NULL |
+<#white>| varchar | password |  | NOT NULL |
+}
+
+object universities {
+<#white>| int | university_id | PK | NOT NULL |
+<#white>| varchar | name | | NOT NULL |
+}
+
+object faculties {
+<#white>| int | faculty_id | PK | NOT NULL |
+<#white>| varchar | faculty_name | | NOT NULL |
+}
+
+object courses {
+<#white>| int | course_id | PK | NOT NULL |
+<#white>| varchar | course_name | | NOT NULL |
+<#white>| int | faculty_id | FK | NOT NULL |
+<#white>| int | university_id | FK | NOT NULL |
+}
+
+object reviews {
+<#white>| int | review_id | PK | NOT NULL |
+<#white>| int | course_id | FK | NOT NULL |
+<#white>| int | user_id | FK | NOT NULL |
+<#white>| varchar | review_text |  | NOT NULL |
+}
+
+
+users }|--|| universities
+courses }|--|| universities
+courses }|--|| faculties
+reviews }|--|| courses
+reviews }|--|| users
+@enduml
