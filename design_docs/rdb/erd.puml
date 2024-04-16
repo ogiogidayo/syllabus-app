@@ -29,13 +29,20 @@ object reviews {
 <#white>| int | review_id | PK | NOT NULL |
 <#white>| int | course_id | FK | NOT NULL |
 <#white>| int | user_id | FK | NOT NULL |
-<#white>| varchar | review_text |  | NOT NULL |
+<#white>| text | review_text |  | NOT NULL |
 }
 
+object university_faculties {
+<#white>| int | university_id | PK, FK | NOT NULL |
+<#white>| int | faculty_id | PK, FK | NOT NULL |
+}
 
 users }|--|| universities
 courses }|--|| universities
 courses }|--|| faculties
+universities }|--|| university_faculties
+faculties }|--|| university_faculties
+
 reviews }|--|| courses
 reviews }|--|| users
 @enduml
